@@ -2,7 +2,7 @@ FOUNDRY_DIR = ../..
 PRODUCTION_DIR = ${FOUNDRY_DIR}/scripts
 DEVELOPMENT_DIR = ${FOUNDRY_DIR}/scripts_
 MODULARIZE = ${FOUNDRY_DIR}/build/modularize
-UGLIFY = uglifyjs --unsafe
+UGLIFY = uglifyjs --unsafe -nc
 
 all: scrollTo min
 

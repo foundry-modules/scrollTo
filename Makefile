@@ -1,11 +1,7 @@
+all: modularize minify
+
 include ../../build/modules.mk
 
 MODULE = scrollTo
-FILENAME = ${MODULE}.js
-SOURCE = jquery.${MODULE}.js
-PRODUCTION = ${PRODUCTION_DIR}/${FILENAME}
-DEVELOPMENT = ${DEVELOPMENT_DIR}/${FILENAME}
-
-all:
-	${MODULARIZE} -jq -n "${MODULE}" ${SOURCE} > ${DEVELOPMENT}
-	${UGLIFYJS} ${DEVELOPMENT} > ${PRODUCTION}
+MODULARIZE_OPTIONS = -jq
+SOURCE_DIR = .

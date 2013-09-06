@@ -193,6 +193,33 @@
 
 		}).end();
 	};
+
+	$.fn.scrollIntoView = function(target) {
+
+		// TODO: Add support for X axis.
+		// TODO: Add support for passing in custom options.
+
+		var target = $(target);
+		if (target.length < 1) return;
+
+		var viewportOffset = this.offset(),
+			viewportHeight = this.height(),
+			viewportTop    = viewportOffset.top,
+			viewportBottom = viewportTop + viewportHeight,
+
+			targetOffset = target.offset(),
+			targetHeight = target.height(),
+			targetTop    = targetOffset.top,
+			targetBottom = targetTop + targetHeight;
+
+		if (targetBottom > viewportBottom) {
+			return this.scrollTo(target);
+		}
+
+		if (targetTop < viewportTop) {
+			return this.scrollTo(target, {offset: (viewportHeight - targetHeight) * -1});
+		}
+	};	
 	
 	// Max scrolling position, works on quirks mode
 	// It only fails (not too badly) on IE, quirks mode.
